@@ -1,32 +1,48 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  html{
+    height: 100%;
+    background: url("./assets/MSK_Raduga_Photo_blured_str.jpg") fixed center;
+    background-size: cover;
 
-#nav {
-  padding: 30px;
+    &::after{
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    }
+    *{
+      box-sizing: border-box;
+      padding: 0; margin: 0;
+    }
+    body{
+      height: 100%;
 
-    &.router-link-exact-active {
-      color: #42b983;
+      #app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #fcfffc;
+        overflow-y: auto;
+        background-color: rgba(174, 176, 180, 0.65);
+        min-height: 100%;
+      }
+
+      #nav {
+        padding: 30px;
+
+        a {
+          font-weight: bold;
+          color: #2c3e50;
+
+          &.router-link-exact-active {
+            color: #42b983;
+          }
+        }
+      }
     }
   }
-}
 </style>
