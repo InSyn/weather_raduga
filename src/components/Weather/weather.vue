@@ -18,7 +18,6 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import station from "./station/station";
-import axios from "axios";
 
 export default {
   mounted() {
@@ -28,9 +27,6 @@ export default {
       this.getData();
       console.log();
     }, 15000);
-    axios.get("http://62.213.36.254:8000/api/v1/stations", response => {
-      console.log(response.body);
-    });
   },
   name: "weather",
   components: {

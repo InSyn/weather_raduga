@@ -11,8 +11,14 @@
           <div class="title">
             {{ station.title }}
           </div>
-          <div class="update-time" v-if="loc === 'stadium'">
-            <span>время обновления: {{ station.data.time }}</span>
+          <div
+            class="update-time"
+            style="display: flex; flex-wrap: nowrap"
+            v-if="loc === 'stadium'"
+          >
+            <div>время обновления: {{ `${station.data.time}` }}</div>
+            <div style="flex-grow: 1"></div>
+            <div style="font-weight: bold;">{{ `${station.data.date}` }}</div>
           </div>
         </div>
         <div class="real_time" v-if="loc === 'stadium'">
@@ -23,8 +29,7 @@
         <div class="main-section">
           <div class="temp-section">
             <span class="temp"
-              >Температура воздуха: {{ station.data.temp }}°
-              {{ station.data.w_w }}</span
+              >Температура воздуха: {{ station.data.temp }}°</span
             >
             <div class="temp_c" v-if="station.data.temp_c">
               <span> ощущается как: {{ station.data.temp_c }} C°</span>
@@ -54,15 +59,15 @@
               </div>
             </div>
           </div>
-          <div class="temp_sg">
+          <div v-if="station.data.vis || station.data.cond" class="temp_sg">
             <div class="temp-sg_inner-wrapper">
-              <div class="temp-sg_row temp_s">
-                Температура почвы:
-                <span class="m_u">{{ station.data.temp_g }}°</span>
+              <div v-if="station.data.vis" class="temp-sg_row temp_s">
+                Видимость:{{ `${station.data.vis} м` }}
               </div>
-              <div class="temp-sg_row temp_g">
-                Температура снега:
-                <span class="m_u">{{ station.data.temp_s }}°</span>
+              <div v-if="station.data.cond" class="temp-sg_row temp_s">
+                <span class="m_u">{{
+                  ` ${station.data.cond && station.data.cond}`
+                }}</span>
               </div>
             </div>
           </div>
@@ -113,16 +118,6 @@ export default {
     padding: 32px 64px;
     background: rgba(52, 56, 52, 0.8);
     z-index: 2;
-    clip-path: polygon(
-      12px 0,
-      calc(100% - 64px) 0,
-      100% 64px,
-      100% calc(100% - 12px),
-      calc(100% - 12px) 100%,
-      64px 100%,
-      0 calc(100% - 64px),
-      0 12px
-    );
     /*overflow: hidden;*/
 
     .station-header {
@@ -512,16 +507,6 @@ export default {
     padding: 32px 32px;
 
     .station-wrapper {
-      clip-path: polygon(
-        12px 0,
-        calc(100% - 36px) 0,
-        100% 36px,
-        100% calc(100% - 12px),
-        calc(100% - 12px) 100%,
-        36px 100%,
-        0 calc(100% - 36px),
-        0 12px
-      );
       .station-header {
         font-size: $font_ML;
 
